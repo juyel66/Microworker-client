@@ -56,8 +56,8 @@ const SocialLogin = () => {
     }
     return (
         <div>
-           <div onClick={handleGoogleSignIn} className="flex hover:bg-gray-300 btn   mb-2  lg:ml-10 ml-14 font-semibold mr-10 items-center gap-2 lg:text-2xl border-2 border-gray-800 rounded-xl  h-12">
-            <p className=" animate-spin"> <FcGoogle></FcGoogle> </p>
+           <div onClick={handleGoogleSignIn} className="flex items-center h-12 gap-2 mb-2 mr-10 font-semibold border-2 border-gray-800 hover:bg-gray-300 btn lg:ml-10 ml-14 lg:text-2xl rounded-xl">
+            <p className=""> <FcGoogle></FcGoogle> </p>
             <p>Sign up with google</p>
            </div>
             

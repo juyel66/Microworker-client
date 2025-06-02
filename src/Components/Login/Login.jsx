@@ -67,50 +67,100 @@ const Login = () => {
     }
 
     return (
-      <div className=''>
+<div className="flex items-center justify-center min-h-screen px-4 py-10 bg-gradient-to-r from-[#b56ac8] to-[#3d1d46]">
+  <div className="flex flex-col items-center w-full max-w-6xl gap-10 lg:flex-row">
+    
 
-          <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center md:w-1/2 lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+        {/* left side: Form */}
+    <div className="w-full shadow-2xl lg:w-1/2 card shrink-0 bg-base-100">
+      <form onSubmit={handleLogin} className="card-body">
+        <div className="grid grid-cols-1 gap-6">
+          {/* Email Input */}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="email"
+              className="input input-bordered"
+              required
+            />
           </div>
-          <div className="card  md:w-1/2 max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleLogin} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input type="email" name="email" placeholder="email" className="input input-bordered" required />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input type="password" placeholder="password" name="password" className="input input-bordered" required />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                </label>
-              </div>
-              <div className="form-control">
-                <label className="label">
-                <LoadCanvasTemplate />
-                </label>
-                <input onBlur={handleValidateCaptcha}  type="text" placeholder="type the text above" name="captcha" className="input input-bordered" required />
-                <p  className='btn btn-outline btn-xs mt-2'>Validate</p>
-               
-              </div>
-              <div className="form-control mt-6">
 
-                <input disabled={disable} className="btn btn-primary" type="submit" value='Login' />
-              </div>
-            </form>
-            <div><SocialLogin></SocialLogin></div>
-            <p to='/signUp' className='pl-8 pb-5  '>You do not have an account Please <Link to='/register' className='text-blue-600 hover:underline'>Register</Link></p>
+          {/* Password Input */}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              className="input input-bordered"
+              required
+            />
+            <label className="label">
+              <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+            </label>
+          </div>
+
+          {/* CAPTCHA */}
+          <div className="form-control">
+            <label className="label">
+              <LoadCanvasTemplate />
+            </label>
+            <input
+              onBlur={handleValidateCaptcha}
+              type="text"
+              name="captcha"
+              placeholder="Type the text above"
+              className="input input-bordered"
+              required
+            />
+            <p className="mt-2 btn btn-outline btn-xs">Validate</p>
           </div>
         </div>
-      </div>
-      </div>
+
+        {/* Submit Button */}
+        <div className="mt-6 form-control">
+          <input
+            disabled={disable}
+            type="submit"
+            value="Login"
+            className="btn btn-primary"
+          />
+        </div>
+      </form>
+
+      {/* Social Login */}
+      <SocialLogin />
+
+      {/* Register Redirect */}
+      <p className="pb-5 text-center">
+        Don't have an account? Please{" "}
+        <Link to="/register" className="text-blue-600 hover:underline">Register</Link>
+      </p>
+    </div>
+
+    
+    {/* right side: Title and Info */}
+    <div className="text-center lg:w-1/2 lg:text-left">
+      <h1 className="mb-4 text-5xl font-bold text-gray-300">Login now!</h1>
+      <h2 className="mb-4 text-3xl font-semibold text-amber-300 ">Welcome Back</h2>
+
+      <p className="text-base leading-relaxed text-gray-200">
+        Enter your credentials to access your Microworker account. If you don’t have an account yet,
+        you can register and start completing microjobs or posting tasks today!
+      </p>
+    </div>
+
+
+  </div>
+</div>
+
+
     );
 };
 

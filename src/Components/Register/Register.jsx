@@ -86,103 +86,122 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Register now</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. <br /> In deleniti eaque aut repudiandae et a id nisi.
-            </p>
+<div className="flex items-center justify-center min-h-screen px-4 py-10 bg-gradient-to-r from-[#3d1d46] to-[#b56ac8]">
+  <div className="flex flex-col items-center w-full max-w-6xl gap-10 lg:flex-row">
+    
+    {/* Left side: Title and Info */}
+    <div className="text-white lg:w-1/2">
+      <h1 className="mb-4 text-5xl font-bold">Register Now</h1>
+      <h2 className="mb-4 text-3xl font-semibold text-yellow-300">Microworker</h2>
+      <p className="text-base leading-relaxed text-gray-100">
+        Microworker is a dynamic and modern platform where users can easily find short tasks or microjobs posted by clients. 
+        Whether you're looking to earn from home or outsource quick digital tasks, Microworker connects workers and clients efficiently. 
+        Register now and join a growing community of smart workers!
+      </p>
+    </div>
+
+    {/* Right side: Form */}
+    <div className="w-full bg-white shadow-2xl lg:w-1/2 card shrink-0 rounded-xl">
+      <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {/* Name Input */}
+          <div className="form-control">
+            <label className="label"><span className="label-text">Name</span></label>
+            <input
+              type="text"
+              {...register("name", { required: true })}
+              name="name"
+              placeholder="Enter your name"
+              className="input input-bordered"
+            />
+            {errors.name && <span className="text-red-700">Name is required</span>}
           </div>
-          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Name</span>
-                </label>
-                <input type="text" {...register("name", { required: true })} name="name" placeholder="Enter your name" className="input input-bordered" />
-                {errors.name && <span className="text-red-700">Name is required</span>}
-              </div>
 
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
-                {errors.email && <span className="text-red-700">Email is required</span>}
-              </div>
+          {/* Email Input */}
+          <div className="form-control">
+            <label className="label"><span className="label-text">Email</span></label>
+            <input
+              type="email"
+              {...register("email", { required: true })}
+              name="email"
+              placeholder="email"
+              className="input input-bordered"
+            />
+            {errors.email && <span className="text-red-700">Email is required</span>}
+          </div>
 
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  {...register("password", {
-                    required: "Password is required",
-                    minLength: {
-                      value: 6,
-                      message: "Password must be at least 6 characters long"
-                    },
-                    maxLength: {
-                      value: 20,
-                      message: "Password cannot exceed 20 characters"
-                    },
-                    validate: {
-                      hasLowerAndUpper: value =>
-                        /[a-z]/.test(value) && /[A-Z]/.test(value) || "Password must contain at least one lowercase and one uppercase letter",
-                      hasSpecialChar: value =>
-                        /[!*"'?,.`~[{()}{}{^%$#@!~()_+]/.test(value) || "Password must contain at least one special character",
-                      hasDigit: value =>
-                        /[0-9]/.test(value) || "Password must contain at least one digit"
-                    }
-                  })}
-                  name="password"
-                  placeholder="password"
-                  className="input input-bordered"
-                />
-                {errors.password && (
-                  <span className="text-red-700">{errors.password.message}</span>
-                )}
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                </label>
-              </div>
+          {/* Password Input */}
+          <div className="form-control">
+            <label className="label"><span className="label-text">Password</span></label>
+            <input
+              type="password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters long"
+                },
+                maxLength: {
+                  value: 20,
+                  message: "Password cannot exceed 20 characters"
+                },
+                validate: {
+                  hasLowerAndUpper: value =>
+                    /[a-z]/.test(value) && /[A-Z]/.test(value) || "Must include lowercase & uppercase",
+                  hasSpecialChar: value =>
+                    /[!*"'?,.`~[{()}{}{^%$#@!~()_+]/.test(value) || "Must include special character",
+                  hasDigit: value =>
+                    /[0-9]/.test(value) || "Must include number"
+                }
+              })}
+              name="password"
+              placeholder="password"
+              className="input input-bordered"
+            />
+            {errors.password && (
+              <span className="text-red-700">{errors.password.message}</span>
+            )}
+          </div>
 
-              <label className="form-control w-full">
-                <div className="label">
-                  <span className="label-text">Category</span>
-                </div>
-                <select defaultValue="default" {...register("role", { required: true })} className="select select-bordered w-full">
-                  <option disabled value="default">
-                    Select the role
-                  </option>
-                  <option value="worker">Worker</option>
-                  <option value="taskCreator">TaskCreator</option>
-                </select> 
-                {errors.email && <span className="text-red-700">role is required</span>}
-              </label>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Photo</span>
-                </label>
-                <input type="file" {...register("photoURL", { required: true })} className="" />
-                {errors.photoURL && <span className="text-red-700">Photo is required</span>}
-              </div>
-
-              <div className="form-control mt-6">
-                <input type="submit" value='Register' className="btn btn-primary" />
-              </div>
-            </form>
-            <SocialLogin></SocialLogin>
-
-            <p className='lg:pl-8 pb-5'>Already have an account? Please <Link to='/login' className="hover:underline text-blue-600">login</Link></p>
+          {/* Photo Input */}
+          <div className="form-control">
+            <label className="label"><span className="label-text">Photo</span></label>
+            <input
+              type="file"
+              {...register("photoURL", { required: true })}
+              className="file-input file-input-bordered"
+            />
+            {errors.photoURL && <span className="text-red-700">Photo is required</span>}
           </div>
         </div>
-      </div>
+
+        {/* Role Select Dropdown */}
+        <div className="mt-4 form-control">
+          <label className="label"><span className="label-text">Category</span></label>
+          <select defaultValue="default" {...register("role", { required: true })} className="select select-bordered">
+            <option disabled value="default">Select the role</option>
+            <option value="worker">Worker</option>
+            <option value="taskCreator">Task Creator</option>
+          </select>
+          {errors.role && <span className="text-red-700">Role is required</span>}
+        </div>
+
+        <div className="mt-6 form-control">
+          <input type="submit" value='Register' className="btn bg-[#3d1d46] hover:bg-[#5e2a67] text-white" />
+        </div>
+      </form>
+
+      <SocialLogin />
+
+      <p className='pb-5 text-center'>
+        Already have an account? Please <Link to='/login' className="text-blue-600 hover:underline">login</Link>
+      </p>
     </div>
+  </div>
+</div>
+
+
+
   );
 };
 

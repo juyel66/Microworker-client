@@ -29,10 +29,10 @@ const Navbar = () => {
       </li>
      <li><NavLink className={({ isActive }) => isActive? "bg-gray-500 text-white btn-success text-bold text-[14px]": "text-[14px] font-bold lg:text-white text-black " } to='https://www.youtube.com/watch?v=Dn_QYofxH34' target="_blank" >Watch Demo</NavLink>
       </li>
-     { user &&
+     
       <li><NavLink className={({ isActive }) => isActive? "bg-gray-500 text-white btn-success text-bold text-[14px]": "text-[14px] font-bold lg:text-white text-black " } to='/dashboard/welcome'  >Dashboard</NavLink>
       </li>
-      }
+      
    
     </>
   )
@@ -49,11 +49,11 @@ const Navbar = () => {
 
     return (
         <div className="">
-            <div className="navbar rounded-xl fixed z-10 bg-opacity-55 h-5 bg-[#331B3F] text-white container mx-auto">
+            <div className="navbar rounded-xl fixed z-10 bg-opacity-55 h-5 bg-[#331B3F] text-white ">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </div>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         {links}
@@ -62,32 +62,45 @@ const Navbar = () => {
     </div>
     <a className="btn btn-ghost lg:text-xl">Microworkers</a>
   </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+  <div className="hidden navbar-center lg:flex">
+    <ul className="px-1 menu menu-horizontal">
      {links}
     </ul>
   </div>
   <div className="navbar-end">
  {
-  user &&
+  user && 
   <div className="flex items-center mr-4 ">
   <p><LiaCoinsSolid className="text-3xl text-yellow-400"/></p>
-  <p className="lg:text-2xl flex">  <span className="lg:flex hidden">Coin:</span> {workerData.coin}</p>
+  <p className="flex lg:text-2xl">  <span className="hidden lg:flex">Coin:</span>{workerData.coin}</p>
   </div>
  }
+
+ 
+
+  {
+  !user &&
+  <div className="flex items-center mr-4 ">
+  <p><LiaCoinsSolid className="text-3xl text-yellow-400"/></p>
+  <p className="flex lg:text-2xl">Coin: 0 </p>
+  </div>
+ }
+
+
+ 
 
     <div>
    
 
       {
-        user && <img className="w-10 h-10 rounded-full mr-2" src={user?.photoURL} alt="" />
+        user && <img className="w-10 h-10 mr-2 rounded-full" src={user?.photoURL} alt="" />
       }
      
 
     </div>
 
     <div className="mr-2">
-<label className="cursor-pointer grid place-items-center">
+<label className="grid cursor-pointer place-items-center">
             <input
               onChange={handleToggle}
               type="checkbox"
@@ -100,10 +113,10 @@ const Navbar = () => {
 </div>
    {
     user? 
-    <a  onClick={handleLogout} className="lg:flex hidden  btn btn-sm">Log Out</a> :
+    <a  onClick={handleLogout} className="hidden lg:flex btn btn-sm">Log Out</a> :
    <div>
-     <Link to='/login' className=" btn btn-sm ">Login</Link>
-     <Link to='/register' className=" btn btn-sm ml-2">Register</Link>
+     <Link to='/login' className=" btn btn-sm">Login</Link>
+     <Link to='/register' className="ml-2 btn btn-sm">Register</Link>
    </div>
    
    }
