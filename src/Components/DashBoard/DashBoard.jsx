@@ -169,7 +169,7 @@ const DashBoard = () => {
           <Outlet />
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
