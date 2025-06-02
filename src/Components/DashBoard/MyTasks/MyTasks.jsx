@@ -65,15 +65,15 @@ const MyTasks = () => {
 
 
   return (
-    <div className="pl-3 pr-3 pb-3">
-      <h1 className="text-center text-3xl mt-4">My Task: {myTasks.length}</h1>
+    <div className="h-screen pb-3 pl-3 pr-3 lg:h-96" >
+      <h1 className="mt-4 text-3xl text-center">My Task: {myTasks.length}</h1>
       {myTasks?.length ? (
         <div>
           <div className="mt-4 mb-4 overflow-x-auto">
             <table className="table">
               {/* head */}
               <thead>
-                <tr className="lg:text-xl border-2  border-gray-800">
+                <tr className="border-2 border-gray-800 lg:text-xl">
                   <th>No</th>
                   <th>Task Title</th>
                   <th>Quantity</th>
@@ -85,9 +85,9 @@ const MyTasks = () => {
                 {myTasks?.map((task, index) => (
                   <tr className="border-2 border-gray-900" key={task._id}>
                     <td>{index + 1}</td>
-                    <td className="py-2 px-4 border-b">{task.title}</td>
-                    <td className="py-2 px-4 border-b">{task.quantity}</td>
-                    <td className="py-2 px-4 border-b">${task.amount}</td>
+                    <td className="px-4 py-2 border-b">{task.title}</td>
+                    <td className="px-4 py-2 border-b">{task.quantity}</td>
+                    <td className="px-4 py-2 border-b">${task.amount}</td>
 
                     <Link to={`/dashboard/updateTask/${task._id}`} className="btn  btn-xl bg-[#dca9f5]  hover:bg-red-500 text-2xl">
                       <MdOutlineSystemUpdateAlt />
@@ -103,9 +103,9 @@ const MyTasks = () => {
         </div>
       ) : (
         <div>
-          <p className="text-center mt-5">No Task history available.</p>
+          <p className="mt-5 text-center">No Task history available.</p>
 
-          <div className="lg:flex justify-center">
+          <div className="justify-center lg:flex">
             <div className="flex-1 lg:hidden">
               <Player
                 autoplay
@@ -115,7 +115,7 @@ const MyTasks = () => {
               ></Player>
             </div>
 
-            <div className="lg:flex hidden">
+            <div className="hidden lg:flex">
               <Player
                 autoplay
                 loop
