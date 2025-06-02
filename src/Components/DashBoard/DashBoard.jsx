@@ -143,7 +143,7 @@ const DashBoard = () => {
                     <NavLink to="/"> Home</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/coming">Watch Demo</NavLink>
+                    <NavLink to="https://www.facebook.com/share/v/19DsoQTAQ8/" target="_blank">Watch Demo</NavLink>
                   </li>
 
                   <li>
