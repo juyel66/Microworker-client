@@ -2,15 +2,17 @@
 import { BsSubstack } from "react-icons/bs";
 import { FaAd, FaHome, FaList, FaTasks, FaUser } from "react-icons/fa";
 import { MdAttachMoney, MdHistory } from "react-icons/md";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import {  NavLink, Outlet } from "react-router-dom";
 // import useUserData from "./useUserData/useUserData";
-import Footer from "../Footer/Footer";
+
 import DashboardNavbar from "./DashboardNavbar/DashboardNavbar";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import useUserData from "./useUserData/useUserData";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const DashBoard = () => {
   const [workerData] = useUserData();
+  const {user} = useContext(AuthContext)
 
   useEffect(() => {
     console.log(workerData.role);
@@ -18,7 +20,7 @@ const DashBoard = () => {
   
 
   return (
-    <div>
+    <div >
       <div className="flex ">
         <div className="w-64 lg:flex hidden  min-h-screen text-[#ACC7B4] bg-[#331B3F]">
           <ul className="menu">
@@ -129,11 +131,14 @@ const DashBoard = () => {
               
            )} 
 
+            
 
-         <div className=" divider">-------------------</div>
 
+{
+  user ?
+             <>
 
-           <>
+           <div className=" divider">-------------------</div>
                              <li>
                     <NavLink to="/"> Home</NavLink>
                   </li>
@@ -145,7 +150,23 @@ const DashBoard = () => {
                     <NavLink to="/dashboard/welcome">Dashboard</NavLink>
                   </li>
            
+           </> :
+           <>
            </>
+}
+
+
+
+
+           
+
+           
+
+
+           
+
+
+        
            {/* <div className="divider"></div>
            <li>
                   <NavLink to="/">
