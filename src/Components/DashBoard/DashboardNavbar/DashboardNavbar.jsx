@@ -193,7 +193,7 @@ const DashboardNavbar = () => {
         <p><LiaCoinsSolid className="text-3xl text-yellow-400"/></p>
         <p className="flex lg:text-2xl">  <span className="hidden lg:flex">Coin:</span> {workerData.coin}</p>
         </div>
-        <img src={workerData?.photoURL} alt="" className="w-12 h-12 mr-2 rounded-full" />
+        {/* <img src={workerData?.photoURL} alt="" className="w-12 h-12 mr-2 rounded-full" /> */}
           <a className="btn ">
             
             {/* You can open the modal using document.getElementById('ID').showModal() method */}

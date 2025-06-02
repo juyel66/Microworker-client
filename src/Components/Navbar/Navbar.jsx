@@ -96,13 +96,11 @@ const Navbar = () => {
     <div>
    
 
-      {
-        user ? <img src={user?.photoURL} alt="" className="w-12 h-12 mr-2 border-2 rounded-full" /> 
-        : 
+     
             <p  >
         <CgProfile  className="w-10 h-10 mr-1"   />
       </p>
-      }
+      
   
      
 

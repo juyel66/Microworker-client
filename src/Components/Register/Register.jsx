@@ -6,9 +6,6 @@ import { useContext, useState } from "react";
 import userAxiosPublic from "../Hook/userAxiosPublic";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-
 const Register = () => {
   const axiosPublic = userAxiosPublic();
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -20,71 +17,44 @@ const Register = () => {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    setLoading(true); // ✅ Loading শুরু
+  const password = watch("password");
 
-    const formData = new FormData();
-    formData.append('image', data.photoURL[0]);
+  const onSubmit = async (data) => {
+    setLoading(true);
 
     try {
-      const res = await axiosPublic.post(image_hosting_api, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      const result = await createUser(data.email, data.password);
+      const loggedUser = result.user;
 
-      if (res.data.success) {
-        const imageUrl = res.data.data.display_url;
+      await updateUserProfile(data.name, "");
 
-        createUser(data.email, data.password)
-          .then(result => {
-            const loggedUser = result.user;
-            updateUserProfile(data.name, imageUrl)
-              .then(() => {
-                const userInfo = {
-                  name: data.name,
-                  email: data.email,
-                  password: data.password,
-                  photoURL: imageUrl,
-                  role: data.role
-                };
-                axiosPublic.post('/users', userInfo)
-                  .then(res => {
-                    if (res.data.insertedId) {
-                      reset();
-                      Swal.fire({
-                        position: "top-center",
-                        icon: "success",
-                        title: "User created successfully",
-                        showConfirmButton: false,
-                        timer: 1700
-                      });
-                      navigate('/');
-                    }
-                  })
-                  .catch(error => {
-                    console.error('Error adding user to the database', error);
-                  })
-                  .finally(() => setLoading(false));
-              })
-              .catch(error => {
-                console.error('Error updating user profile', error);
-                setLoading(false);
-              });
-          })
-          .catch(error => {
-            console.error('Error creating user', error);
-            setLoading(false);
-          });
-      } else {
-        console.error('Image upload failed', res.data);
-        setLoading(false);
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        photoURL: "",
+        role: data.role,
+      };
+
+      const res = await axiosPublic.post("/users", userInfo);
+      if (res.data.insertedId) {
+        reset();
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "User created successfully",
+          showConfirmButton: false,
+          timer: 1700,
+        });
+        navigate("/");
       }
     } catch (error) {
-      console.error('Error uploading image', error);
+      console.error("Registration error", error);
+    } finally {
       setLoading(false);
     }
   };
@@ -92,63 +62,52 @@ const Register = () => {
   return (
     <div className="flex items-center justify-center min-h-screen px-4 py-10 bg-gradient-to-r from-[#3d1d46] to-[#b56ac8]">
       <div className="flex flex-col items-center w-full max-w-6xl gap-10 lg:flex-row">
-        
-        {/* Left side: Title and Info */}
         <div className="text-white lg:w-1/2">
           <h1 className="mb-4 text-5xl font-bold">Register Now</h1>
           <h2 className="mb-4 text-3xl font-semibold text-yellow-300">Microworker</h2>
           <p className="text-base leading-relaxed text-gray-100">
-            Microworker is a dynamic and modern platform where users can easily find short tasks or microjobs posted by clients. 
-            Whether you're looking to earn from home or outsource quick digital tasks, Microworker connects workers and clients efficiently. 
+            Microworker is a dynamic and modern platform where users can easily find short tasks or microjobs posted by clients.
+            Whether you're looking to earn from home or outsource quick digital tasks, Microworker connects workers and clients efficiently.
             Register now and join a growing community of smart workers!
           </p>
         </div>
 
-        {/* Right side: Form */}
         <div className="w-full bg-white shadow-2xl lg:w-1/2 card shrink-0 rounded-xl">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-              {/* Name Input */}
+              {/* Name */}
               <div className="form-control">
                 <label className="label"><span className="label-text">Name</span></label>
                 <input
                   type="text"
                   {...register("name", { required: true })}
-                  name="name"
                   placeholder="Enter your name"
                   className="input input-bordered"
                 />
                 {errors.name && <span className="text-red-700">Name is required</span>}
               </div>
 
-              {/* Email Input */}
+              {/* Email */}
               <div className="form-control">
                 <label className="label"><span className="label-text">Email</span></label>
                 <input
                   type="email"
                   {...register("email", { required: true })}
-                  name="email"
                   placeholder="email"
                   className="input input-bordered"
                 />
                 {errors.email && <span className="text-red-700">Email is required</span>}
               </div>
 
-              {/* Password Input */}
+              {/* Password */}
               <div className="form-control">
                 <label className="label"><span className="label-text">Password</span></label>
                 <input
                   type="password"
                   {...register("password", {
                     required: "Password is required",
-                    minLength: {
-                      value: 6,
-                      message: "Password must be at least 6 characters long"
-                    },
-                    maxLength: {
-                      value: 20,
-                      message: "Password cannot exceed 20 characters"
-                    },
+                    minLength: { value: 6, message: "Password must be at least 6 characters long" },
+                    maxLength: { value: 20, message: "Password cannot exceed 20 characters" },
                     validate: {
                       hasLowerAndUpper: value =>
                         /[a-z]/.test(value) && /[A-Z]/.test(value) || "Must include lowercase & uppercase",
@@ -158,28 +117,30 @@ const Register = () => {
                         /[0-9]/.test(value) || "Must include number"
                     }
                   })}
-                  name="password"
                   placeholder="password"
                   className="input input-bordered"
                 />
-                {errors.password && (
-                  <span className="text-red-700">{errors.password.message}</span>
-                )}
+                {errors.password && <span className="text-red-700">{errors.password.message}</span>}
               </div>
 
-              {/* Photo Input */}
+              {/* Confirm Password */}
               <div className="form-control">
-                <label className="label"><span className="label-text">Photo</span></label>
+                <label className="label"><span className="label-text">Confirm password</span></label>
                 <input
-                  type="file"
-                  {...register("photoURL", { required: true })}
-                  className="file-input file-input-bordered"
+                  type="password"
+                  {...register("confirmPassword", {
+                    required: "Confirm Password is required",
+                    validate: value =>
+                      value === password || "Passwords do not match"
+                  })}
+                  placeholder="Confirm password"
+                  className="input input-bordered"
                 />
-                {errors.photoURL && <span className="text-red-700">Photo is required</span>}
+                {errors.confirmPassword && <span className="text-red-700">{errors.confirmPassword.message}</span>}
               </div>
             </div>
 
-            {/* Role Select Dropdown */}
+            {/* Role */}
             <div className="mt-4 form-control">
               <label className="label"><span className="label-text">Category</span></label>
               <select defaultValue="default" {...register("role", { required: true })} className="select select-bordered">
@@ -190,29 +151,17 @@ const Register = () => {
               {errors.role && <span className="text-red-700">Role is required</span>}
             </div>
 
-            {/* Submit Button */}
-            {/* <div className="mt-6 form-control">
-              <input
-                type="submit"
-                value={loading ? <span className="loading loading-spinner loading-sm"></span> : 'Register'}
-                disabled={loading}
-                
-                className={`btn text-white ${loading ? ' cursor-not-allowed' : 'bg-[#3d1d46] hover:bg-[#5e2a67]'}`}
-              />
-            </div> */}
+            {/* Submit */}
             <div className="mt-6 form-control">
-  <button
-    type="submit"
-    disabled={loading}
-    className={`btn text-white flex items-center justify-center gap-2 ${loading ? ' cursor-not-allowed' : 'bg-[#3d1d46] hover:bg-[#5e2a67]'}`}
-  >
-    {loading && <span className="loading loading-spinner loading-sm"></span>}
-    {loading ? 'Registering...' : 'Register'}
-  </button>
-</div>
-
-
-            
+              <button
+                type="submit"
+                disabled={loading}
+                className={`btn text-white flex items-center justify-center gap-2 ${loading ? ' cursor-not-allowed' : 'bg-[#3d1d46] hover:bg-[#5e2a67]'}`}
+              >
+                {loading && <span className="loading loading-spinner loading-sm"></span>}
+                {loading ? 'Registering...' : 'Register'}
+              </button>
+            </div>
           </form>
 
           <SocialLogin />
