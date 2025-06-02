@@ -130,7 +130,7 @@ const DashBoard = () => {
            )} 
 
 
-           <div className="divider"></div>
+         <div className=" divider">-------------------</div>
 
 
            <>
