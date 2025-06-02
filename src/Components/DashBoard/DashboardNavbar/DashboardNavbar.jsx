@@ -32,7 +32,7 @@ const DashboardNavbar = () => {
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -45,7 +45,7 @@ const DashboardNavbar = () => {
                 />
               </svg>
             </div>
-            <h1 className="lg:text-2xl lg:flex hidden font-semibold">Microworker</h1>
+            <h1 className="hidden font-semibold lg:text-2xl lg:flex">Microworker</h1>
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
@@ -80,7 +80,7 @@ const DashboardNavbar = () => {
                 {workerData.role === "worker" && (
                   <>
                     {/* Worker */}
-                    <li className="lg:text-2xl text-xl font-bold lg:ml-10">
+                    <li className="text-xl font-bold lg:text-2xl lg:ml-10">
                       Worker
                     </li>
                     <li>
@@ -109,7 +109,7 @@ const DashboardNavbar = () => {
                 {workerData.role === "taskCreator" && (
                   <>
                     {/* Task Creator */}
-                    <li className="lg:text-2xl font-bold text-xl lg:ml-10">
+                    <li className="text-xl font-bold lg:text-2xl lg:ml-10">
                       Task Creator
                     </li>
                     <li>
@@ -158,12 +158,12 @@ const DashboardNavbar = () => {
                   </li>
                 </>
                 <div className="divider"> </div>
-                <a  onClick={handleLogout} className="  btn btn-sm">Log Out</a>
+                <a  onClick={handleLogout} className=" btn btn-sm">Log Out</a>
               </ul>
             </ul>
           </div>
           {/* <h1 className="text-2xl font-semibold">Microworker</h1> */}
-          <a className="btn lg:hidden btn-ghost text-xl">
+          <a className="text-xl btn lg:hidden btn-ghost">
             {workerData.role === "admin" && (
               <>
                 <h1>Admin</h1>
@@ -181,35 +181,17 @@ const DashboardNavbar = () => {
             )}
           </a>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="hidden navbar-center lg:flex">
           <div></div>
-          <ul className="menu menu-horizontal px-1">
-            {/* <li>
-              <a>Item 1</a>
-            </li> */}
-            {/* <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li> */}
-            {/* <li>
-              <a>Item 3</a>
-            </li> */}
+          <ul className="px-1 menu menu-horizontal">
+        
           </ul>
         </div>
        
         <div className="navbar-end ">
         <div className="flex items-center mr-4 ">
         <p><LiaCoinsSolid className="text-3xl text-yellow-400"/></p>
-        <p className="lg:text-2xl flex">  <span className="lg:flex hidden">Coin:</span> {workerData.coin}</p>
+        <p className="flex lg:text-2xl">  <span className="hidden lg:flex">Coin:</span> {workerData.coin}</p>
         </div>
         <img src={workerData?.photoURL} alt="" className="w-12 h-12 mr-2 rounded-full" />
           <a className="btn ">
@@ -220,9 +202,9 @@ const DashboardNavbar = () => {
   <div className="modal-box">
     <form method="dialog">
       {/* if there is a button in form, it will close the modal */}
-      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      <button className="absolute btn btn-sm btn-circle btn-ghost right-2 top-2">✕</button>
     </form>
-    <h3 className="font-bold text-lg">Notifications</h3>
+    <h3 className="text-lg font-bold">Notifications</h3>
     <p className="py-4">no any notifications</p>
   </div>
 </dialog>
