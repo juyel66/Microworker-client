@@ -27,10 +27,10 @@ const DashBoard = () => {
               
               <>
                 {/* Admin */}
-                <img className="w-20 lg:ml-10 h-20 rounded-full" src="https://i.ibb.co/bmy5cnX/jrrrr.png" alt="" />
+                <img className="w-20 h-20 rounded-full lg:ml-10" src="https://i.ibb.co/bmy5cnX/jrrrr.png" alt="" />
                 <div className="">
                 
-                <p className="lg:text-2xl font-bold text-xl lg:ml-10">
+                <p className="text-xl font-bold lg:text-2xl lg:ml-10">
                   Admin
                 </p>
                 </div>
@@ -53,11 +53,14 @@ const DashBoard = () => {
 
              )} 
 
+
+             
+
             {workerData.role === "worker" && (
               <>
                 {/* Worker */}
-                <img className="w-20 lg:ml-10 h-20 rounded-full" src="https://i.ibb.co/bmy5cnX/jrrrr.png" alt="" />
-                <li className="lg:text-2xl text-xl font-bold lg:ml-10">
+                <img className="w-20 h-20 rounded-full lg:ml-10" src="https://i.ibb.co/bmy5cnX/jrrrr.png" alt="" />
+                <li className="text-xl font-bold lg:text-2xl lg:ml-10">
                   Worker
                 </li>
                 <li>
@@ -87,8 +90,8 @@ const DashBoard = () => {
             {workerData.role === "taskCreator" && (
               <>
                 {/* Task Creator */}
-                <img className="w-20 lg:ml-10 h-20 rounded-full" src="https://i.ibb.co/bmy5cnX/jrrrr.png" alt="" />
-                <li className="lg:text-2xl font-bold text-xl lg:ml-10">
+                <img className="w-20 h-20 rounded-full lg:ml-10" src="https://i.ibb.co/bmy5cnX/jrrrr.png" alt="" />
+                <li className="text-xl font-bold lg:text-2xl lg:ml-10">
                   Task Creator
                 </li>
                 <li>
@@ -120,8 +123,29 @@ const DashBoard = () => {
               </>
 
 
+
+
+
               
            )} 
+
+
+           <div className="divider"></div>
+
+
+           <>
+                             <li>
+                    <NavLink to="/"> Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/coming">Watch Demo</NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink to="/dashboard/welcome">Dashboard</NavLink>
+                  </li>
+           
+           </>
            {/* <div className="divider"></div>
            <li>
                   <NavLink to="/">
@@ -131,8 +155,13 @@ const DashBoard = () => {
                 </li> */}
 
           </ul>
+
+          
           
         </div>
+
+
+        
         
         
         <div className="flex-1 bg-[#e3bef5]">
