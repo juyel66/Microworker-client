@@ -94,7 +94,13 @@ const TaskDetails = () => {
           <h1 className="text-3xl font-semibold text-center">Task Details</h1>
           <div className="flex flex-col mt-3 mb-10 md:flex-row justify-around gap-5 items-center min-h-[calc(100vh-306px)] mx-auto">
             <div className="flex-1 border-2 border-gray-900 lg:px-4 lg:py-7 bg-[#bf81de] rounded-md shadow-md md:min-h-[350px]">
-            
+            <div className="flex items-center justify-center">
+                <img
+                className="h-[250px] object-cover lg:w-[1000px]"
+                src={data.image}
+                alt=""
+              />
+            </div>
               <div className="text-center">
                 <h1 className="mt-2 text-3xl font-semibold text-gray-800">
                   {data.title}
