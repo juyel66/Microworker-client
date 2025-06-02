@@ -191,14 +191,28 @@ const Register = () => {
             </div>
 
             {/* Submit Button */}
-            <div className="mt-6 form-control">
+            {/* <div className="mt-6 form-control">
               <input
                 type="submit"
-                value={loading ? 'Registering...' : 'Register'}
+                value={loading ? <span className="loading loading-spinner loading-sm"></span> : 'Register'}
                 disabled={loading}
+                
                 className={`btn text-white ${loading ? ' cursor-not-allowed' : 'bg-[#3d1d46] hover:bg-[#5e2a67]'}`}
               />
-            </div>
+            </div> */}
+            <div className="mt-6 form-control">
+  <button
+    type="submit"
+    disabled={loading}
+    className={`btn text-white flex items-center justify-center gap-2 ${loading ? ' cursor-not-allowed' : 'bg-[#3d1d46] hover:bg-[#5e2a67]'}`}
+  >
+    {loading && <span className="loading loading-spinner loading-sm"></span>}
+    {loading ? 'Registering...' : 'Register'}
+  </button>
+</div>
+
+
+            
           </form>
 
           <SocialLogin />
