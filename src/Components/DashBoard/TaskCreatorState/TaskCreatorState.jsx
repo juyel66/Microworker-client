@@ -54,24 +54,24 @@ const TaskCreatorState = () => {
   return (
     <div>
       
-      <div className="grid pl-4 mb-10 mt-3 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
-      <div className="card border-2 border-gray-300 w-96 bg-[#743f8f] text-[#ceedd8] shadow-xl">
+      <div className="grid grid-cols-1 p-4 mt-3 mb-10 lg:grid-cols-3 md:grid-cols-2">
+      <div className="card border-2 border-gray-300 w-full bg-[#743f8f] text-[#ceedd8] shadow-xl">
         <div className="card-body">
-          <div className="card-actions justify-end">
+          <div className="justify-end card-actions">
           </div>
           <h1 className="lg:text-3xl">Available Coin: {workerData.coin}</h1>
         </div>
       </div>
-      <div className="card w-96 border-2 border-gray-300 bg-[#743f8f] text-[#ceedd8] shadow-xl">
+      <div className="card w-full border-2 border-gray-300 bg-[#743f8f] text-[#ceedd8] shadow-xl">
         <div className="card-body">
-          <div className="card-actions justify-end">
+          <div className="justify-end card-actions">
           </div>
           <h1 className="lg:text-3xl">Pending Task: {pendingData.length}</h1>
         </div>
       </div>
-      <div className="card w-96 border-2 border-gray-300 bg-[#743f8f] text-[#ceedd8] shadow-xl">
+      <div className="card w-full border-2 border-gray-300 bg-[#743f8f] text-[#ceedd8] shadow-xl">
         <div className="card-body">
-          <div className="card-actions justify-end">
+          <div className="justify-end card-actions">
           </div>
           <h1 className="lg:text-3xl">Total paid: {paidData.length}</h1>
         </div>
