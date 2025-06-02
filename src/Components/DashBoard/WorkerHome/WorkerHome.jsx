@@ -39,15 +39,15 @@ const WorkerHome = () => {
         <div>
 
 
-<div className="grid grid-cols-1 pl-4 mt-3 mb-10 lg:grid-cols-3 md:grid-cols-2">
-      <div className="card border-2 border-gray-300 w-80 bg-[#743f8f] text-[#ceedd8] shadow-xl">
+<div className="flex pl-4 mt-3 mb-10 cols-1 flex-center lg:grid-cols-3 md:grid-cols-2">
+      <div className="card border-2 border-gray-300 w-80 lg:w-full bg-[#743f8f] text-[#ceedd8] shadow-xl">
         <div className="card-body">
           <div className="justify-end card-actions">
           </div>
           <h1 className="lg:text-3xl">Available Coin: {workerData.coin}</h1>
         </div>
       </div>
-      <div className="card w-80 border-2 border-gray-300 bg-[#743f8f] text-[#ceedd8] shadow-xl">
+      <div className="card w-80 lg:w-full border-2 border-gray-300 bg-[#743f8f] text-[#ceedd8] shadow-xl">
         <div className="card-body">
           <div className="justify-end card-actions">
           </div>

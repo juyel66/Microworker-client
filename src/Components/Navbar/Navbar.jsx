@@ -93,7 +93,7 @@ const Navbar = () => {
    
 
       {
-        user && <img className="w-10 h-10 mr-2 rounded-full" src={user?.photoURL} alt="" />
+        workerData && <img src={workerData?.photoURL} alt="" className="w-12 h-12 mr-2 rounded-full" />
       }
      
 
