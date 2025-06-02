@@ -94,13 +94,13 @@ const AddNewTask = () => {
   console.log('amount is',amount)
 
   return (
-    <div>
-      <p className="text-4xl text-center font-bold mt-5">Add New Task</p>
-      <p className="text-3xl text-center font-semibold mt-5">Total coin: {workerData.coin}</p>
-      <div className="lg:p-10 mt-8">
+    <div  className="p-2">
+      <p className="mt-5 text-4xl font-bold text-center ">Add New Task</p>
+      <p className="mt-5 text-3xl font-semibold text-center">Total coin: {workerData.coin}</p>
+      <div className="mt-8 lg:p-10">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex gap-3">
-            <label className="form-control w-full">
+            <label className="w-full form-control">
               <div className="label">
                 <span className="label-text">Task Title</span>
               </div>
@@ -112,7 +112,7 @@ const AddNewTask = () => {
               />
               {errors.title && <span className="text-red-700">Title is required</span>}
             </label>
-            <label className="form-control w-full">
+            <label className="w-full form-control">
               <div className="label">
                 <span className="label-text">Task Details</span>
               </div>
@@ -126,7 +126,7 @@ const AddNewTask = () => {
             </label>
           </div>
           <div className="flex gap-3">
-            <label className="form-control w-full">
+            <label className="w-full form-control">
               <div className="label">
                 <span className="label-text">Task Quantity</span>
               </div>
@@ -138,7 +138,7 @@ const AddNewTask = () => {
               />
               {errors.quantity && <span className="text-red-700">Quantity is required</span>}
             </label>
-            <label className="form-control w-full">
+            <label className="w-full form-control">
               <div className="label">
                 <span className="label-text">Payable Amount</span>
               </div>
@@ -152,7 +152,7 @@ const AddNewTask = () => {
             </label>
           </div>
           <div className="flex gap-3">
-            <label className="form-control w-full">
+            <label className="w-full form-control">
               <div className="label">
                 <span className="label-text">Posting date</span>
               </div>
@@ -164,7 +164,7 @@ const AddNewTask = () => {
               />
               {errors.postingDate && <span className="text-red-700">Posting date is required</span>}
             </label>
-            <label className="form-control w-full">
+            <label className="w-full form-control">
               <div className="label">
                 <span className="label-text">Completion Date</span>
               </div>
@@ -177,7 +177,7 @@ const AddNewTask = () => {
               {errors.completionDate && <span className="text-red-700">Completion date is required</span>}
             </label>
           </div>
-          <label className="form-control w-full">
+          <label className="w-full form-control">
             <div className="label">
               <span className="label-text">Submission info</span>
             </div>
@@ -191,7 +191,7 @@ const AddNewTask = () => {
           </label>
           <div className="mt-2 mb-2">
             <span className="label-text">Task Image</span> <br />
-            <input {...register("image", { required: true })} type="file" className="file-input file-input-bordered file-input-sm w-full max-w-xs" />
+            <input {...register("image", { required: true })} type="file" className="w-full max-w-xs file-input file-input-bordered file-input-sm" />
             {errors.image && <span className="text-red-700">Image is required</span>}
           </div>
           <button className="btn bg-[#743f8f] lg:w-full text-white lg:text-xl">Add Item </button>
@@ -334,12 +334,12 @@ export default AddNewTask;
 
 //   return (
 //     <div>
-//       <p className="text-4xl text-center font-bold mt-5">Add New Task</p>
-//       <p className="text-3xl text-center font-semibold mt-5">Total Coin: {totalAmount}</p>
-//       <div className="lg:p-10 mt-8">
+//       <p className="mt-5 text-4xl font-bold text-center">Add New Task</p>
+//       <p className="mt-5 text-3xl font-semibold text-center">Total Coin: {totalAmount}</p>
+//       <div className="mt-8 lg:p-10">
 //         <form onSubmit={handleSubmit(onSubmit)}>
 //           <div className="flex gap-3">
-//             <label className="form-control w-full">
+//             <label className="w-full form-control">
 //               <div className="label">
 //                 <span className="label-text">Task Title</span>
 //               </div>
@@ -347,11 +347,11 @@ export default AddNewTask;
 //                 type="text"
 //                 placeholder="Task Title"
 //                 {...register("title", { required: true })}
-//                 className="input input-bordered w-full"
+//                 className="w-full input input-bordered"
 //               />
 //               {errors.title && <span className="text-red-700">field is required</span>}
 //             </label>
-//             <label className="form-control w-full">
+//             <label className="w-full form-control">
 //               <div className="label">
 //                 <span className="label-text">Task Details</span>
 //               </div>
@@ -359,13 +359,13 @@ export default AddNewTask;
 //                 type="text"
 //                 placeholder="Task Details"
 //                 {...register("details", { required: true })}
-//                 className="input input-bordered w-full"
+//                 className="w-full input input-bordered"
 //               />
 //               {errors.details && <span className="text-red-700">field is required</span>}
 //             </label>
 //           </div>
 //           <div className="flex gap-3">
-//             <label className="form-control w-full">
+//             <label className="w-full form-control">
 //               <div className="label">
 //                 <span className="label-text">Task Quantity</span>
 //               </div>
@@ -373,11 +373,11 @@ export default AddNewTask;
 //                 type="number"
 //                 placeholder="Quantity"
 //                 {...register("quantity", { required: true })}
-//                 className="input input-bordered w-full"
+//                 className="w-full input input-bordered"
 //               />
 //               {errors.quantity && <span className="text-red-700">field is required</span>}
 //             </label>
-//             <label className="form-control w-full">
+//             <label className="w-full form-control">
 //               <div className="label">
 //                 <span className="label-text">Payable Amount</span>
 //               </div>
@@ -385,13 +385,13 @@ export default AddNewTask;
 //                 type="number"
 //                 placeholder="Payable Amount"
 //                 {...register("amount", { required: true })}
-//                 className="input input-bordered w-full"
+//                 className="w-full input input-bordered"
 //               />
 //               {errors.amount && <span className="text-red-700">field is required</span>}
 //             </label>
 //           </div>
 //           <div className="flex gap-3">
-//             <label className="form-control w-full">
+//             <label className="w-full form-control">
 //               <div className="label">
 //                 <span className="label-text">Posting Date</span>
 //               </div>
@@ -399,11 +399,11 @@ export default AddNewTask;
 //                 type="date"
 //                 placeholder="Posting date"
 //                 {...register("postingDate", { required: true })}
-//                 className="input input-bordered w-full"
+//                 className="w-full input input-bordered"
 //               />
 //               {errors.postingDate && <span className="text-red-700">field is required</span>}
 //             </label>
-//             <label className="form-control w-full">
+//             <label className="w-full form-control">
 //               <div className="label">
 //                 <span className="label-text">Completion Date</span>
 //               </div>
@@ -411,12 +411,12 @@ export default AddNewTask;
 //                 type="date"
 //                 placeholder="Completion date"
 //                 {...register("completionDate", { required: true })}
-//                 className="input input-bordered w-full"
+//                 className="w-full input input-bordered"
 //               />
 //               {errors.completionDate && <span className="text-red-700"> field is required</span>}
 //             </label>
 //           </div>
-//           <label className="form-control w-full">
+//           <label className="w-full form-control">
 //             <div className="label">
 //               <span className="label-text">Submission Info</span>
 //             </div>
@@ -424,7 +424,7 @@ export default AddNewTask;
 //               type="text"
 //               placeholder="Submission info"
 //               {...register("SubmissionInfo", { required: true })}
-//               className="input input-bordered w-full"
+//               className="w-full input input-bordered"
 //             />
 //             {errors.SubmissionInfo && <span className="text-red-700">field is required</span>}
 //           </label>
@@ -433,7 +433,7 @@ export default AddNewTask;
 //             <input
 //               {...register("image", { required: true })}
 //               type="file"
-//               className="file-input file-input-bordered file-input-sm w-full max-w-xs"
+//               className="w-full max-w-xs file-input file-input-bordered file-input-sm"
 //             /> <br />
 //             {errors.image && <span className="text-red-700">field is required</span>}
 //           </div>
