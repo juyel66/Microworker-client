@@ -86,7 +86,7 @@ const Navbar = () => {
   !user &&
   <div className="flex items-center mr-4 ">
   <p><LiaCoinsSolid className="text-3xl text-yellow-400"/></p>
-  <p className="flex lg:text-2xl">Coin: 0 </p>
+  <p className="hidden lg:flex lg:text-2xl">Coin: 0 </p>
   </div>
  }
 
@@ -123,7 +123,7 @@ const Navbar = () => {
     <a  onClick={handleLogout} className="hidden lg:flex btn btn-sm">Log Out</a> :
    <div>
      <Link to='/login' className=" btn btn-sm">Login</Link>
-     <Link to='/register' className="ml-2 btn btn-sm">Register</Link>
+     <Link to='/register' className="hidden ml-2 lg:flex btn btn-sm ">Register</Link>
    </div>
    
    }

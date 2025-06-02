@@ -72,8 +72,10 @@ const Login = () => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen px-4 py-10 bg-gradient-to-r from-[#b56ac8] to-[#3d1d46]">
-      <div className="flex flex-col items-center w-full max-w-6xl gap-10 lg:flex-row">
+<div>
+
+      <div className="flex items-center justify-center min-h-screen px-4 py-10 bg-gradient-to-r from-[#b56ac8] to-[#3d1d46]">
+      <div className="flex flex-col-reverse items-center w-full max-w-6xl gap-10 lg:flex-row">
 
         {/* left side: Form */}
         <div className="w-full shadow-2xl lg:w-1/2 card shrink-0 bg-base-100">
@@ -169,6 +171,15 @@ const Login = () => {
 
       </div>
     </div>
+
+
+
+    
+
+
+    
+
+</div>
   );
 };
 

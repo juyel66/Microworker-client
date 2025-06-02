@@ -37,11 +37,11 @@ const MySubmissions = () => {
   };
 
   if (isLoading) {
-    return <div className="flex mt-40 justify-center"><span className="loading  loading-spinner w-40 "></span> </div>;
+    return <div className="flex justify-center mt-40"><span className="w-40 loading loading-spinner "></span> </div>;
   }
 
   if (error) {
-    return    <div className="lg:flex justify-center">
+    return    <div className="justify-center lg:flex">
     <div className="flex-1 lg:hidden">
       <Player
         autoplay
@@ -51,7 +51,7 @@ const MySubmissions = () => {
       ></Player>
     </div>
 
-    <div className="lg:flex hidden">
+    <div className="hidden lg:flex">
       <Player
         autoplay
         loop
@@ -70,19 +70,19 @@ const MySubmissions = () => {
   const currentData = data ? data.slice(startIndex, endIndex) : [];
 
   return (
-    <div className="pl-10 pr-10">
+    <div className="h-screen pl-10 pr-10">
       {data && data?.length  > 0 ? (
         <div>
-          <div className="flex justify-between mt-5">
-            <h1 className="text-3xl text-center font-semibold">
+          <div className="flex justify-between mt-5 ">
+            <h1 className="text-3xl font-semibold text-center">
               My Submissions: {data.length}
             </h1>
-            <Link to='/dashboard/withdrawals' className="btn rounded-full bg-[#743f8f]  text-[#ceedd8] text-3xl">Withdraw Coin</Link>
+            <Link to='/dashboard/withdrawals' className="btn rounded-full bg-[#743f8f]   text-[#ceedd8] text-3xl">Withdraw Coin</Link>
           </div>
           <div className="mt-4 mb-4 overflow-x-auto">
             <table className="table">
               <thead>
-                <tr className="lg:text-xl border-2  border-gray-800">
+                <tr className="border-2 border-gray-800 lg:text-xl">
                   <th>No</th>
                   <th>Task Title</th>
                   <th>Details</th>
@@ -95,10 +95,10 @@ const MySubmissions = () => {
                 {currentData.map((submission, index) => (
                   <tr className="border-2 border-gray-900" key={submission._id}>
                     <td>{startIndex + index + 1}</td>
-                    <td className="py-2 px-4 border-b">{submission.taskTitle}</td>
-                    <td className="py-2 px-4 border-b">{submission.submissionDetails}</td>
-                    <td className="py-2 px-4 border-b">${submission.payableAmount}</td>
-                    <td className="py-2 px-4 border-b">{submission.currentDate}</td>
+                    <td className="px-4 py-2 border-b">{submission.taskTitle}</td>
+                    <td className="px-4 py-2 border-b">{submission.submissionDetails}</td>
+                    <td className="px-4 py-2 border-b">${submission.payableAmount}</td>
+                    <td className="px-4 py-2 border-b">{submission.currentDate}</td>
                     <td className={`py-2 px-4 ${submission.status === 'approved' && 'text-green-500 font-bold'}
                   ${submission.status === 'Rejected' && 'text-red-500 font-bold'}
                   border-b`}>{submission.status}</td>
@@ -135,7 +135,7 @@ const MySubmissions = () => {
         </div>
       ) : (
         <div>
-               <div className="lg:flex justify-center">
+               <div className="justify-center lg:flex">
             <div className="flex-1 lg:hidden">
               <Player
                 autoplay
@@ -145,7 +145,7 @@ const MySubmissions = () => {
               ></Player>
             </div>
 
-            <div className="lg:flex hidden">
+            <div className="hidden lg:flex">
               <Player
                 autoplay
                 loop
