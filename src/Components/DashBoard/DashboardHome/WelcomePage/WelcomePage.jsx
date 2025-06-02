@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 const WelcomePage = () => {
   return (
-    <div className="bg-[#ce8cef] min-h-screen ">
+    <div className="bg-[#ce8cef] min-h-screen  ">
       <h1 className="lg:text-4xl text-center font-bold  bg-clip-text text-transparent bg-gradient-to-r from-[#02B7D7] to-[#FF4500]">
   Welcome to our earning platform
 </h1> 
       
 
-      <div className="lg:flex items-center justify-center mt-10  lg:pr-10 lg:pl-10">
+      <div className="items-center justify-center mt-10 ml-2 mr-2 lg:flex lg:pr-10 lg:pl-10">
         <div>
           <h1 className="lg:text-5xl text-[#743f8f] font-bold ">
             MANAGE YOUR <br /> <span className="text-4xl text-[#743f8f]">DASHBOARD</span>
@@ -25,7 +25,7 @@ const WelcomePage = () => {
             style={{ height: "300px", width: "200px" }}
           ></Player>
         </div>
-        <div className="lg:flex hidden">
+        <div className="hidden lg:flex">
           <Player
             autoplay
             loop
