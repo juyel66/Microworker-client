@@ -1,6 +1,6 @@
 # Microworker
 
-## live site link: https://microworker-bd.netlify.app/
+
 
 Microworker is a website where users can post jobs and workers can apply for those jobs.
 
