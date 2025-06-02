@@ -54,7 +54,7 @@ const TaskReview = () => {
   };
 
   if (isLoading) {
-    return <div className="flex mt-40 justify-center"><span className="loading loading-spinner w-40"></span></div>;
+    return <div className="flex justify-center mt-40"><span className="w-40 loading loading-spinner"></span></div>;
   }
 
   if (error) {
@@ -105,9 +105,9 @@ const TaskReview = () => {
 
 
   return (
-    <div className="text-[#0a040e]" >
+    <div className="text-[#0a040e] " >
       <div>
-        <h1 className="text-3xl pl-4">Task Creator state</h1>
+        <h1 className="pl-4 text-3xl">Task Creator state</h1>
         <div >
           <TaskCreatorState ></TaskCreatorState>
           
@@ -115,7 +115,7 @@ const TaskReview = () => {
 
         </div>
       </div>
-      <h1 className="text-3xl text-center font-semibold mt-3"> Submissions Review ({data.length})</h1>
+      <h1 className="mt-3 text-3xl font-semibold text-center"> Submissions Review ({data.length})</h1>
 
       {
         data.length > 0 ? 
@@ -126,7 +126,7 @@ const TaskReview = () => {
         <div className="mt-4 mb-4 overflow-x-auto">
           <table className="table">
             <thead>
-              <tr className="lg:text-xl border-2  border-gray-800">
+              <tr className="border-2 border-gray-800 lg:text-xl">
                 <th>No</th>
                 <th>Worker Name</th>
                 <th>Worker Email</th>
@@ -140,17 +140,17 @@ const TaskReview = () => {
               {currentData.map((submission, index) => (
                 <tr className="border-2 border-gray-900" key={submission._id}>
                   <td>{startIndex + index + 1}</td>
-                  <td className="py-2 px-4 border-b">{submission.workerName}</td>
-                  <td className="py-2 px-4 border-b">{submission.email}</td>
-                  <td className="py-2 px-4 border-b">${submission.payableAmount}</td>
-                  <td className="py-2 px-4 border-b">
+                  <td className="px-4 py-2 border-b">{submission.workerName}</td>
+                  <td className="px-4 py-2 border-b">{submission.email}</td>
+                  <td className="px-4 py-2 border-b">${submission.payableAmount}</td>
+                  <td className="px-4 py-2 border-b">
                     <button className="btn bg-[#c17ae5] rounded-full text-[#ceedd8]"  onClick={() => openModal(submission)}>View Details</button>
                   </td>
                   <td className={`py-2 px-4 ${submission.status === 'approved' && 'text-green-500 font-bold'}
                   ${submission.status === 'Rejected' && 'text-red-500 font-bold'}
                   border-b`}>{submission.status}</td>
 
-                  {/* <td className="py-2 px-4 border-b">Approve</td> */}
+                  {/* <td className="px-4 py-2 border-b">Approve</td> */}
                   <button disabled={submission.status === 'approved'} onClick= {() => handleStatus(submission._id, submission.status, 'approved')} className={` btn bg-[#743f8f]  text-white px-2 py-2 mt-2`}>Approve</button>
                   <button disabled={submission.status === 'approved'}  onClick= {() => handleStatus(submission._id, submission.status, 'Rejected')}    className="btn text-[#ceedd8]  bg-pink-500">Reject</button>
                 </tr>
@@ -188,13 +188,13 @@ const TaskReview = () => {
       {/* Modal for showing submission details */}
       {selectedSubmission && (
         <dialog id="my_modal_4" className="modal">
-          <div className="modal-box w-11/12 max-w-5xl">
+          <div className="w-11/12 max-w-5xl modal-box">
             <div>
             <div className="text-center">
-            <div className="flex justify-center items-center">  <img  src={selectedSubmission.image} alt="" /></div>
+            <div className="flex items-center justify-center">  <img  src={selectedSubmission.image} alt="" /></div>
          
-            <p className=" font-semibold"><strong>Submission Details:</strong> {selectedSubmission.submissionDetails}</p>
-            <p className=" font-semibold"><strong>Task Title</strong> {selectedSubmission.taskTitle
+            <p className="font-semibold "><strong>Submission Details:</strong> {selectedSubmission.submissionDetails}</p>
+            <p className="font-semibold "><strong>Task Title</strong> {selectedSubmission.taskTitle
             }</p>
             <p className=""><strong>Worker Name:</strong> {selectedSubmission.workerName}</p>
             <p className=""><strong>Worker Email:</strong> {selectedSubmission.email}</p>
@@ -212,7 +212,7 @@ const TaskReview = () => {
 </div> :
 <div>
 <div>
-               <div className="lg:flex justify-center">
+               <div className="justify-center lg:flex">
             <div className="flex-1 lg:hidden">
               <Player
                 autoplay
@@ -222,7 +222,7 @@ const TaskReview = () => {
               ></Player>
             </div>
 
-            <div className="lg:flex hidden">
+            <div className="hidden lg:flex">
               <Player
                 autoplay
                 loop

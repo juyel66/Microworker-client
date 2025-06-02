@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const WelcomePage = () => {
   return (
-    <div className="bg-[#ce8cef] min-h-screen  ">
+    <div className="">
       <h1 className="lg:text-4xl text-center font-bold  bg-clip-text text-transparent bg-gradient-to-r from-[#02B7D7] to-[#FF4500]">
   Welcome to our earning platform
 </h1> 

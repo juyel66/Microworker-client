@@ -138,7 +138,7 @@ const DashBoard = () => {
   user ?
              <>
 
-           <div className=" divider">-------------------</div>
+           <div className=" divider">-----------------------------</div>
                              <li>
                     <NavLink to="/"> Home</NavLink>
                   </li>
