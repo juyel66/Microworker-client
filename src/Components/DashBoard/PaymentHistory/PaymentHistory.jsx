@@ -31,8 +31,8 @@ const PaymentHistory = () => {
   console.log("Your payment history", payments);
 
   return (
-    <div  className="p-3">
-      <p className="mt-4 text-3xl font-semibold text-center">
+    <div  className="h-screen p-3">
+      <p className="mt-4 text-3xl font-semibold text-center ">
         Your Payment History: {payments?.length}
       </p>
       <p className="mt-2 text-xl font-semibold text-center">
