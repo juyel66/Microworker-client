@@ -8,6 +8,9 @@ import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
   const {user, logOut} = useAuth();
+
+
+  console.log('user is ', user)
   const [workerData] = useUserData();
   const [theme] = useState(() => {
     const storedTheme = localStorage.getItem('theme');
@@ -94,10 +97,10 @@ const Navbar = () => {
    
 
       {
-        user ? <img src={workerData?.photoURL} alt="" className="w-12 h-12 mr-2 border-2 rounded-full" /> 
+        user ? <img src={user?.photoURL} alt="" className="w-12 h-12 mr-2 border-2 rounded-full" /> 
         : 
             <p  >
-        <CgProfile  className="w-10 h-10"   />
+        <CgProfile  className="w-10 h-10 mr-1"   />
       </p>
       }
   
